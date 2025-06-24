@@ -1,0 +1,6 @@
+# Ignore all hidden files/folders
+.*
+
+# But don't ignore these:
+!.gitignore
+!.vscode/
