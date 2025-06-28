@@ -1,6 +1,6 @@
 # Define Ecternal Ip
 resource "aws_eip" "levelup-nat" {
-  vpc = true
+  #vpc = true
 }
 
 # Custom NAT Gateway for the VPC

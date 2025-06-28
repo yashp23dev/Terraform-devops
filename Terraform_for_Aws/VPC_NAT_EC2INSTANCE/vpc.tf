@@ -1,6 +1,6 @@
 #Create a Vpc in Aws
 
-resource "aws_vpc" "level_up" {
+resource "aws_vpc" "levelupvpc" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
   enable_dns_support = "true"
@@ -97,7 +97,7 @@ resource "aws_internet_gateway" "levelup-gw" {
 
 # Custom Route Table for Public Subnets
 
-resource "aws_route_table" "levelup-public-rt" {
+resource "aws_route_table" "levelup-public" {
   vpc_id = aws_vpc.levelupvpc.id
 
   route {
