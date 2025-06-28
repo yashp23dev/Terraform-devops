@@ -8,10 +8,6 @@ variable "AWS_REGION" {
 default = "us-east-2"
 }
 
-variable "Security_Group"{
-    type = list
-    default = ["sg-24076", "sg-90890", "sg-456789"]
-}
 
 variable "AMIS" {
     type = map
@@ -22,6 +18,11 @@ variable "AMIS" {
         us-west-1 = "ami-0f40c8f97004632f9"
     }
 }
+
+variable "PATH_TO_PUBLIC_KEY" {
+  default = "levelup_key.pub"
+}
+
 
 variable "INSTANCE_USERNAME" {
   default = "ubuntu"
