@@ -27,7 +27,7 @@ resource "aws_db_instance" "mariadb-instance" {
   storage_type            = "gp2"
   engine                  = "mariadb"
   engine_version          = "10.5"
-  instance_class          = "db.t2.micro"
+  instance_class          = "db.t3.micro"
   db_subnet_group_name    = aws_db_subnet_group.mariadb-subnets.name
   vpc_security_group_ids  = [aws_security_group.allow-mariadb.id]
   parameter_group_name    = aws_db_parameter_group.mariadb-params.name
