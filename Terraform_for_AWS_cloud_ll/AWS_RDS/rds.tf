@@ -32,7 +32,7 @@ resource "aws_db_instance" "mariadb-instance" {
   vpc_security_group_ids  = [aws_security_group.allow-mariadb.id]
   parameter_group_name    = aws_db_parameter_group.mariadb-params.name
   username                = "admin"
-  password                = "admin" # Change this to a secure password
+  password                = "password" # Change this to a secure password
   skip_final_snapshot     = true
   availability_zone       = aws_subnet.levelupvpc-private-1.availability_zone
   backup_retention_period = 30
