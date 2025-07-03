@@ -44,9 +44,10 @@ resource "aws_iam_policy" "s3_access_policy" {
   })
 }
 
-# Instance identifier
+# Instance identifier profile
 
-resource "aws_iam_role_policy_attachment" "s3_access_attachment" {
-  role       = aws_iam_role.s3_access_role.name
-  policy_arn = aws_iam_policy.s3_access_policy.arn
+resource "aws_iam_instance_profile" "s3_access_instance_profile" {
+  name = "s3_access_instance_profile"
+  role = aws_iam_role.s3_access_role.name
 }
+

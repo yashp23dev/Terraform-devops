@@ -9,7 +9,7 @@ resource "aws_instance" "MyFirstInstnace" {
   availability_zone = "us-east-2a"
   key_name      = aws_key_pair.levelup_key.key_name
   
-  iam_instance_profile = aws_iam_role_policy_attachment.s3_access_attachment.name
+  iam_instance_profile = aws_iam_instance_profile.s3_access_instance_profile.name
   
   
   tags = {
