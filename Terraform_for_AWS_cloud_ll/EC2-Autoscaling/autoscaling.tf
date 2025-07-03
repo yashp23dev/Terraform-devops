@@ -97,3 +97,6 @@ resource "aws_cloudwatch_metric_alarm" "AutoDeScalingAlarm" {
   actions_enabled = true
   alarm_actions = [aws_autoscaling_policy.AutoDeScalingPolicy.arn]
 }
+
+
+
