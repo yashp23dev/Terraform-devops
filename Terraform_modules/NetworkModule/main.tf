@@ -9,7 +9,7 @@ module "myvpc" {
 }
 
 #Resource key pair
-resource "aws_key_pair" "deployer_key" {
+resource "aws_key_pair" "custom_key" {
     key_name   = "custom_key"
     public_key = file(var.public_key_path)
 }
@@ -18,8 +18,8 @@ resource "aws_key_pair" "deployer_key" {
 resource "aws_instance" "custom_ec2" {
     ami                         = var.ami_id
     instance_type               = var.instance_type
-    subnet_id                   = module.network.public_subnet_id
-    vpc_security_group_ids      = [module.network.security_group_id]
+    subnet_id                   = module.myvpc.public_subnet_id
+    vpc_security_group_ids      = [module.myvpc.security_group_id]
     key_name                    = aws_key_pair.custom_key.key_name
 
     tags = {

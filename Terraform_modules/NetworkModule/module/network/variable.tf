@@ -16,7 +16,7 @@ variable "availability_zone" {
 
 variable "public_key_path" {
   description = "public key path"
-  default = "~/.ssh/custom_key.pub"
+  default = "/root/.ssh/custom_key.pub"
 }
 
 variable "environment_tag" {

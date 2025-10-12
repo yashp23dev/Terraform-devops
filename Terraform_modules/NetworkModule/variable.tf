@@ -9,7 +9,7 @@ variable "environment_tag" {
 
 variable "public_key_path" {
   description = "Path to the public key"
-  default     = "~/.ssh/custom_key.pub"
+  default     = "/root/.ssh/custom_key.pub"
 }
 
 variable "ami_id" {
