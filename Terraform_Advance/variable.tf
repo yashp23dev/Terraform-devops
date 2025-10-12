@@ -9,5 +9,5 @@ variable "AWS_REGION" {
 variable "environment" {
   description = "The environment to deploy resources in"
   type        = string
-  default     = "dev"
+  default     = "Development"
 }
