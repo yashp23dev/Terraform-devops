@@ -49,7 +49,7 @@ resource "aws_security_group" "levelup_rds_sg" {
 resource "aws_db_instance" "levelup_rds_instance" {
   identifier              = "${var.ENVIRONMENT}-levelup-rds-instance"
   allocated_storage       = var.LEVELUP_RDS_ALLOCATED_STORAGE
-  storage_type            = "gp2"
+  storage_type            = "gp3"
   engine                  = var.LEVELUP_RDS_ENGINE
   engine_version          = var.LEVELUP_RDS_ENGINE_VERSION
   instance_class          = var.DB_INSTANCE_CLASS
@@ -58,7 +58,7 @@ resource "aws_db_instance" "levelup_rds_instance" {
 
   username                = var.LEVELUP_RDS_USERNAME
   password                = var.LEVELUP_RDS_PASSWORD
-  
+
   vpc_security_group_ids  = [aws_security_group.levelup_rds_sg.id]
   db_subnet_group_name    = aws_db_subnet_group.levelup_rds_subnet_group.name
   multi_az                = false
