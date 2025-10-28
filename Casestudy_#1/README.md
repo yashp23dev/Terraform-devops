@@ -1,4 +1,4 @@
-# End to End Appicatio Deployment on AWS
+# End to End Application Deployment on AWS
 
 > 🚀 Complete Terraform-based deployment for a sample web application (VPC → RDS → Webservers behind ALB)
 
