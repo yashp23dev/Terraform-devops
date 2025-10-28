@@ -16,7 +16,9 @@ It is structured as a module for reusable infra components and a `webserver` top
 ## Directory structure 🗂️
 
 ```
-/home/yash/Terraform/Casestudy_#1
+/Terraform/Casestudy_#1
+├─ main.tf                # (optional) root entrypoint — check module sources
+├─ variable.tf            # (optional) root-level variables
 ├─ module/ 🚧
 │  ├─ vpc/ 🛰️
 │  │  ├─ vpc.tf            # VPC, subnets, IGW, NAT, route tables, outputs
@@ -82,20 +84,35 @@ Prerequisites:
 - AWS CLI configured (or set `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` / `AWS_PROFILE`).
 - A public SSH key available at the path in `var.PUBLIC_KEY_PATH` or update the variable.
 
-Recommended flow (run from the `webserver/` directory because the top-level `.tf` references `../module`):
+
+Recommended flow — run Terraform from the repository root (`/Terraform/Casestudy_#1`):
+
+1) Make sure the root `main.tf` correctly references your modules and/or environment configuration. If `main.tf` is not set up, either:
+  - Fix `main.tf` so it includes (or calls) the `webserver` configuration and modules under `module/`, or
+  - Use the alternate approach shown below.
+
+2) From the repository root run:
 
 ```bash
-# move into the configuration directory
-cd webserver
+# run from repo root
+cd /Terraform/Casestudy_#1
 
 # initialize providers and modules
 terraform init
 
-# (optional) review plan
+# plan and save
 terraform plan -out plan.tfplan
 
-# apply plan (or run `terraform apply` and accept)
+# apply the saved plan
 terraform apply "plan.tfplan"
+```
+
+Alternate (no root changes): run Terraform commands while staying in root but targeting the `webserver/` directory using `-chdir`:
+
+```bash
+terraform -chdir=webserver init
+terraform -chdir=webserver plan -out webserver/plan.tfplan
+terraform -chdir=webserver apply "webserver/plan.tfplan"
 ```
 
 After `apply` succeeds, check outputs:
@@ -104,7 +121,7 @@ After `apply` succeeds, check outputs:
 
 ## Useful variable overrides
 
-Create a `terraform.tfvars` in `webserver/` or pass `-var` flags. Example `terraform.tfvars`:
+Create a `terraform.tfvars` in `Casestudy_#1/` or pass `-var` flags. Example `terraform.tfvars`:
 
 ```hcl
 ENVIRONMENT = "production"
