@@ -19,7 +19,7 @@ resource "aws_subnet" "levelup_vpc_public_subnet_1" {
     vpc_id                          = aws_vpc.levelup_vpc.id
     cidr_block                      = var.LEVELUP_VPC_PUBLIC_SUBNET1_CIDR_BLOCK
     availability_zone               = data.aws_availability_zones.available.names[0]
-    map_customer_owned_ip_on_launch = "true"
+    map_public_ip_on_launch         = "true"
     tags = {
         Name = "${var.ENVIRONMENT}-levelup-vpcpublic-subnet-1"
     }
@@ -30,7 +30,7 @@ resource "aws_subnet" "levelup_vpc_public_subnet_2" {
     vpc_id                          = aws_vpc.levelup_vpc.id
     cidr_block                      = var.LEVELUP_VPC_PUBLIC_SUBNET2_CIDR_BLOCK
     availability_zone               = data.aws_availability_zones.available.names[1]
-    map_customer_owned_ip_on_launch = "true"
+    map_public_ip_on_launch         = "true"
     tags = {
         Name = "${var.ENVIRONMENT}-levelup-vpcpublic-subnet-2"
     }
@@ -85,7 +85,7 @@ resource "aws_nat_gateway" "levelup_nat_gw" {
 # Route Table for Public Architecture
 resource "aws_route_table" "public" {
     vpc_id = aws_vpc.levelup_vpc.id
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.levelup_igw.id
     }
@@ -97,7 +97,7 @@ resource "aws_route_table" "public" {
 # Route Table for Private Subnets
 resource "aws_route_table" "private" {
     vpc_id = aws_vpc.levelup_vpc.id
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_nat_gateway.levelup_nat_gw.id
     }

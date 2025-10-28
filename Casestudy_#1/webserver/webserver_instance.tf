@@ -53,7 +53,7 @@ resource "aws_security_group" "levelup_webservers" {
 # Resource Key pair for webserver instances
 resource "aws_key_pair" "levelup_webserver_keypair" {
   key_name   = "levelup_key"
-  public_key = file(var.PUBLIC_KEY_PATH)
+  public_key = file(pathexpand(var.PUBLIC_KEY_PATH) )
 }
 
 resource "aws_launch_configuration" "launch_config_webserver" {
