@@ -68,7 +68,7 @@ Before deploying, make sure you have:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/ELK-Terraform-AWS.git
+git clone https://github.com/yashp23dev/ELK-Terraform-AWS.git
 cd Demo-2
 ```
 
