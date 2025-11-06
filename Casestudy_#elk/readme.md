@@ -40,7 +40,7 @@ This Terraform setup provisions infrastructure on AWS and automatically installs
 ## 📁 Project Structure
 
 ```
-Demo-2/
+Casestudy_#elk/
 ├── createinstance.tf      # Terraform code to provision EC2 instance
 ├── varaible.tf            # Input variables for AWS region, AMI, etc.
 ├── installELK.sh          # Script to install Elasticsearch, Logstash, and Kibana
@@ -68,8 +68,8 @@ Before deploying, make sure you have:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yashp23dev/ELK-Terraform-AWS.git
-cd Demo-2
+git clone https://github.com/yashp23dev/Casestudy_#elk.git
+cd Casestudy_#elk
 ```
 
 ### 2️⃣ Initialize Terraform
